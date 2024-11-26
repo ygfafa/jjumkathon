@@ -15,12 +15,14 @@ const PriceTrackerFilterButtonGroup = ({
 }: PriceTrackerFilterButtonGroupProps) => {
   const { updateQuery, query } = useQuerySync()
 
+  const currentType = query.type || PRICE_TRACKER_INFO[0].key
+
   return (
     <section className={cn('flex gap-6', className)} {...props}>
       {PRICE_TRACKER_INFO.map(({ key, label }) => (
         <ChipButton
           key={key}
-          selected={query.type === key}
+          selected={currentType === key}
           onClick={() => {
             updateQuery({ type: key })
           }}
