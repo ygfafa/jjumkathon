@@ -1,7 +1,6 @@
 'use client'
 
 import ChipButton from '@/components/chip-button'
-import { useQuerySync } from '@/hooks/use-query-sync'
 import { cn } from '@/lib/utils'
 import { PRICE_TRACKER_INFO } from '../constants'
 import useCurrentPriceTrackerType from '../hooks/use-current-price-tracker-type'

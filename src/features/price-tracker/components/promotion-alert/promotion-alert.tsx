@@ -1,10 +1,8 @@
 'use client'
 
-import React from 'react'
-import PromotionAlertTemplate from './promotion-alert-template'
 import { PriceTrackerKeys } from '../../constants'
-import { useQuerySync } from '@/hooks/use-query-sync'
 import useCurrentPriceTrackerType from '../../hooks/use-current-price-tracker-type'
+import PromotionAlertTemplate from './promotion-alert-template'
 
 const promotions: {
   title: string
