@@ -8,7 +8,8 @@ import {
   PageHeaderTitle,
 } from '@/components/layouts/page-header'
 import PageBackButton from '@/components/page-back-button'
-import PriceInfo from '@/features/price-tracker/components/price-info'
+import PriceInfo from '@/features/price-tracker/components/price-info/price-info'
+import PromotionAlert from '@/features/price-tracker/components/promotion-alert/promotion-alert'
 
 const PriceTrackerPage = () => {
   return (
@@ -20,9 +21,14 @@ const PriceTrackerPage = () => {
         <PageHeaderTitle>생활물가 알리미</PageHeaderTitle>
       </PageHeader>
 
-      <PageBody>
-        <PriceTrackerFilterButtonGroup className="mb-24" />
-        <PriceInfo />
+      <PageBody noBodyPadding>
+        <div className="px-20">
+          <PriceTrackerFilterButtonGroup className="mb-24" />
+          <PriceInfo />
+        </div>
+        <div className="flex-1 px-18 bg-gray-50 pt-24">
+          <PromotionAlert />
+        </div>
       </PageBody>
 
       {/* <Tabs defaultValue="환율" className="mb-5">

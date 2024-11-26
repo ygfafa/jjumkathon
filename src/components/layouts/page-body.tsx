@@ -1,8 +1,21 @@
 import { cn } from '@/lib/utils'
 
+type PageBodyProps = {
+  noBodyPadding?: boolean
+} & React.ComponentProps<'div'>
 export const PageBody = ({
   className,
+  noBodyPadding,
   ...props
-}: React.ComponentProps<'div'>) => {
-  return <div className={cn('px-20', className)} {...props} />
+}: PageBodyProps) => {
+  return (
+    <div
+      className={cn(
+        'flex flex-col px-20 flex-1',
+        noBodyPadding && 'px-0',
+        className
+      )}
+      {...props}
+    />
+  )
 }

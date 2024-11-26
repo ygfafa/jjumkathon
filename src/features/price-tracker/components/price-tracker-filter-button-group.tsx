@@ -4,6 +4,7 @@ import ChipButton from '@/components/chip-button'
 import { useQuerySync } from '@/hooks/use-query-sync'
 import { cn } from '@/lib/utils'
 import { PRICE_TRACKER_INFO } from '../constants'
+import useCurrentPriceTrackerType from '../hooks/use-current-price-tracker-type'
 
 type PriceTrackerFilterButtonGroupProps = Omit<
   React.ComponentProps<'section'>,
@@ -13,9 +14,7 @@ const PriceTrackerFilterButtonGroup = ({
   className,
   ...props
 }: PriceTrackerFilterButtonGroupProps) => {
-  const { updateQuery, query } = useQuerySync()
-
-  const currentType = query.type || PRICE_TRACKER_INFO[0].key
+  const { updateType, currentType } = useCurrentPriceTrackerType()
 
   return (
     <section className={cn('flex gap-6', className)} {...props}>
@@ -24,7 +23,7 @@ const PriceTrackerFilterButtonGroup = ({
           key={key}
           selected={currentType === key}
           onClick={() => {
-            updateQuery({ type: key })
+            updateType(key)
           }}
         >
           {label}
