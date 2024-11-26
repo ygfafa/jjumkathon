@@ -10,6 +10,7 @@ import {
 import PageBackButton from '@/components/page-back-button'
 import PriceInfo from '@/features/price-tracker/components/price-info/price-info'
 import PromotionAlert from '@/features/price-tracker/components/promotion-alert/promotion-alert'
+import { Suspense } from 'react'
 
 const PriceTrackerPage = () => {
   return (
@@ -23,11 +24,17 @@ const PriceTrackerPage = () => {
 
       <PageBody noBodyPadding>
         <div className="px-20">
-          <PriceTrackerFilterButtonGroup className="mb-24" />
-          <PriceInfo />
+          <Suspense>
+            <PriceTrackerFilterButtonGroup className="mb-24" />
+          </Suspense>
+          <Suspense>
+            <PriceInfo />
+          </Suspense>
         </div>
         <div className="flex-1 px-18 bg-gray-50 pt-24">
-          <PromotionAlert />
+          <Suspense>
+            <PromotionAlert />
+          </Suspense>
         </div>
       </PageBody>
 
