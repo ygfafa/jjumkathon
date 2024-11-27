@@ -7,7 +7,7 @@ export const PageHeader = ({
   return (
     <div
       className={cn(
-        'relative h-[56px] flex justify-center items-center mb-16',
+        'sticky top-0 h-[56px] flex justify-center items-center mb-16',
         className
       )}
       {...props}

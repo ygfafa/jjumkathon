@@ -19,8 +19,10 @@ export default function RootLayout({
         as="style"
         type="font/woff2"
       />
-      <body className="max-w-[460px] w-full mx-auto border-l border-r min-h-full">
-        {children}
+      <body>
+        <div className="max-w-[460px] w-full mx-auto border-l border-r min-h-full flex flex-col">
+          {children}
+        </div>
       </body>
     </html>
   )

@@ -1,6 +1,6 @@
 'use client'
 
-import { PriceTrackerKeys } from '../../constants'
+import { PRiceTackerType } from '../../constants'
 import useCurrentPriceTrackerType from '../../hooks/use-current-price-tracker-type'
 import PromotionAlertTemplate from './promotion-alert-template'
 
@@ -8,7 +8,7 @@ const promotions: {
   title: string
   description: string
   link: string
-  target: PriceTrackerKeys
+  target: PRiceTackerType
 }[] = [
   {
     title: '최대 99만원 세액공제 받기',

@@ -8,6 +8,11 @@ import {
 import { Button } from '@/components/shadcn/button'
 
 import MoneyBagGreen from '@/assets/icons/money_bag_green.svg'
+import {
+  PriceTrackerAvatarWrapper,
+  PriceTrackerContentWrapper,
+  PriceTrackerRateWrapper,
+} from './price-tracker-content-template'
 
 const DUMMY_DATA = [
   {
@@ -36,14 +41,14 @@ const DUMMY_DATA = [
   },
 ]
 
-const ExchangeRates = () => {
+const ExchangeRate = () => {
   return (
-    <div className="flex flex-col gap-y-32">
+    <PriceTrackerContentWrapper>
       {DUMMY_DATA.map((data, index) => (
         <Meta key={index}>
-          <div className="w-[40px] h-[40px] bg-gray-100 flex-shrink-0 rounded-full flex justify-center items-center">
+          <PriceTrackerAvatarWrapper>
             <MoneyBagGreen />
-          </div>
+          </PriceTrackerAvatarWrapper>
           <MetaContent>
             <MetaTitle>
               <span className="font-bold">{data.nation}</span> {data.currency}
@@ -52,13 +57,9 @@ const ExchangeRates = () => {
               <span className="font-bold mr-8">
                 {data.price.toLocaleString()}원{' '}
               </span>
-              <span
-                className={`${
-                  data.rate > 0 ? 'text-red-600' : 'text-blue-600'
-                }`}
-              >
+              <PriceTrackerRateWrapper up={data.rate > 0}>
                 {data.rate}%
-              </span>
+              </PriceTrackerRateWrapper>
             </MetaDescription>
           </MetaContent>
           <MetaExtra className="flex-shrink-0">
@@ -66,8 +67,8 @@ const ExchangeRates = () => {
           </MetaExtra>
         </Meta>
       ))}
-    </div>
+    </PriceTrackerContentWrapper>
   )
 }
 
-export default ExchangeRates
+export default ExchangeRate

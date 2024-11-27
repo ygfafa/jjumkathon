@@ -1,10 +1,10 @@
-export type PriceTrackerKeys =
+export type PRiceTackerType =
   | 'exchange-rates'
   | 'grocery-prices'
   | 'fuel-prices'
   | 'living-benefits'
-export const PRICE_TRACKER_INFO: {
-  key: PriceTrackerKeys
+export const PRICE_TRACKER_TYPE: {
+  key: PRiceTackerType
   label: string
   title: string
 }[] = [

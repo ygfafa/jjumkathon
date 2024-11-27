@@ -8,7 +8,8 @@ import {
   PageHeaderTitle,
 } from '@/components/layouts/page-header'
 import PageBackButton from '@/components/page-back-button'
-import PriceInfo from '@/features/price-tracker/components/price-info/price-info'
+import PriceTrackerContent from '@/features/price-tracker/components/price-tracker-content/price-tracker-content'
+import PriceTrackerHeader from '@/features/price-tracker/components/price-tracker-header'
 import PromotionAlert from '@/features/price-tracker/components/promotion-alert/promotion-alert'
 import { Suspense } from 'react'
 
@@ -28,7 +29,8 @@ const PriceTrackerPage = () => {
             <PriceTrackerFilterButtonGroup className="mb-24" />
           </Suspense>
           <Suspense>
-            <PriceInfo />
+            <PriceTrackerHeader />
+            <PriceTrackerContent />
           </Suspense>
         </div>
         <div className="flex-1 px-18 bg-gray-50 pt-24">

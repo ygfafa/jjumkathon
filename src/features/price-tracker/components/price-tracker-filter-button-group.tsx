@@ -2,7 +2,7 @@
 
 import ChipButton from '@/components/chip-button'
 import { cn } from '@/lib/utils'
-import { PRICE_TRACKER_INFO } from '../constants'
+import { PRICE_TRACKER_TYPE } from '../constants'
 import useCurrentPriceTrackerType from '../hooks/use-current-price-tracker-type'
 
 type PriceTrackerFilterButtonGroupProps = Omit<
@@ -17,7 +17,7 @@ const PriceTrackerFilterButtonGroup = ({
 
   return (
     <section className={cn('flex gap-6', className)} {...props}>
-      {PRICE_TRACKER_INFO.map(({ key, label }) => (
+      {PRICE_TRACKER_TYPE.map(({ key, label }) => (
         <ChipButton
           key={key}
           selected={currentType === key}
