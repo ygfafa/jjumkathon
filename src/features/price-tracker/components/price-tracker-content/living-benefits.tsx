@@ -48,7 +48,7 @@ const LivingBenefits = () => {
             </MetaDescription>
           </MetaContent>
           <MetaExtra className="flex-shrink-0">
-            <Button size="sm">알림받기</Button>
+            <Button size="sm">혜택받기</Button>
           </MetaExtra>
         </Meta>
       ))}
