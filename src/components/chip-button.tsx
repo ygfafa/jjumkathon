@@ -7,7 +7,7 @@ const ChipButton = ({ className, selected, ...props }: ChipButtonProps) => {
   return (
     <button
       className={cn(
-        'rounded-250 font-bold border px-12 py-4 h-36',
+        'inline-block rounded-250 font-bold border px-12 py-4 h-36',
         selected
           ? 'bg-gray-900 border-gray-900 text-white'
           : 'text-gray-500 border-gray-300',

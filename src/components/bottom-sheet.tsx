@@ -21,17 +21,10 @@ const BottomSheet = ({
   children,
   onClose,
   height,
-  hideHandle,
   maskClosable = true,
-  handleOnly = false,
 }: BottomSheetProps) => {
   return (
-    <Drawer.Root
-      open={open}
-      onClose={onClose}
-      noBodyStyles
-      // handleOnly={handleOnly}
-    >
+    <Drawer.Root open={open} onClose={onClose} noBodyStyles>
       <Drawer.Portal>
         <Drawer.Overlay
           className="fixed inset-0 z-50 bg-black/30"
@@ -44,8 +37,6 @@ const BottomSheet = ({
           )}
           style={{ height }}
         >
-          {/* {!hideHandle && <Drawer.Handle className="mb-6 mt-3 bg-black/10" />} */}
-
           <div className="mx-auto w-full">{children}</div>
         </Drawer.Content>
       </Drawer.Portal>

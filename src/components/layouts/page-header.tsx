@@ -7,7 +7,7 @@ export const PageHeader = ({
   return (
     <div
       className={cn(
-        'sticky top-0 h-[56px] flex justify-center items-center mb-16',
+        'sticky top-0 h-[56px] flex justify-center items-center mb-16 bg-white',
         className
       )}
       {...props}
@@ -21,7 +21,7 @@ export const PageHeaderTitle = ({
 }: React.ComponentProps<'h1'>) => (
   <h1
     className={cn(
-      'text-lg font-bold absolute left-1/2 -translate-x-1/2',
+      'text-16 font-bold absolute left-1/2 -translate-x-1/2',
       className
     )}
     {...props}

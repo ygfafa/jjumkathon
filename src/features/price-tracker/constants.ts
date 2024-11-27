@@ -29,3 +29,35 @@ export const PRICE_TRACKER_TYPE: {
     title: '생활에 도움이 될만한\n혜택들을 알려드려요!',
   },
 ] as const
+
+export const PRICE_TRACKER_PROMOTIONS: {
+  title: string
+  description: string
+  link: string
+  target: PRiceTackerType
+}[] = [
+  {
+    title: '최대 99만원 세액공제 받기',
+    description: '카카오페이증권 연금저축 이벤트',
+    target: 'exchange-rates',
+    link: '/',
+  },
+  {
+    title: '긴급 물가지원 혜택',
+    description: '최저가로 장보고 쇼핑환급금 까지!',
+    target: 'grocery-prices',
+    link: '/',
+  },
+  {
+    title: '최대 10만원까지 돌려받는',
+    description: '주유비 지원 체크카드 도착!',
+    target: 'fuel-prices',
+    link: '/',
+  },
+  {
+    title: '최대 48만원 현금으로 돌려받는',
+    description: '인터넷 지원금 이벤트',
+    target: 'living-benefits',
+    link: '/',
+  },
+]

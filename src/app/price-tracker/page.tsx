@@ -33,7 +33,7 @@ const PriceTrackerPage = () => {
             <PriceTrackerContent />
           </Suspense>
         </div>
-        <div className="flex-1 px-18 bg-gray-50 pt-24">
+        <div className="flex-1 px-18 bg-gray-50 py-24">
           <Suspense>
             <PromotionAlert />
           </Suspense>

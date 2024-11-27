@@ -2,10 +2,8 @@ import {
   Meta,
   MetaContent,
   MetaDescription,
-  MetaExtra,
   MetaTitle,
 } from '@/components/meta'
-import { Button } from '@/components/shadcn/button'
 
 import FuelPricesIcon from '@/assets/icons/fuel_prices.svg'
 import {

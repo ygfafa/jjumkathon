@@ -11,7 +11,6 @@ import LivingBenefitsIcon from '@/assets/icons/living_benefits.svg'
 import {
   PriceTrackerAvatarWrapper,
   PriceTrackerContentWrapper,
-  PriceTrackerRateWrapper,
 } from './price-tracker-content-template'
 
 const DUMMY_DATA = [
