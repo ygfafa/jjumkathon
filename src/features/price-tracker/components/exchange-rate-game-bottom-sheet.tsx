@@ -2,6 +2,7 @@
 
 import BottomSheet from '@/components/bottom-sheet'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useState } from 'react'
 
 const ExchangeRateGameBottomSheet = () => {
@@ -29,9 +30,12 @@ const ExchangeRateGameBottomSheet = () => {
         objectFit="cover"
         layout="responsive"
       />
-      <button className="rounded-16 p-16 bg-white text-[#6164FA] font-bold w-full text-16">
+      <Link
+        href="/games/exchange-rate"
+        className="block text-center rounded-16 p-16 bg-white text-[#6164FA] font-bold w-full text-16"
+      >
         게임 참여하기
-      </button>
+      </Link>
     </BottomSheet>
   )
 }

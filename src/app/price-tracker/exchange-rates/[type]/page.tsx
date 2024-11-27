@@ -8,17 +8,16 @@ import {
 } from '@/components/layouts/page-header'
 import PageBackButton from '@/components/page-back-button'
 
-import TrendDownIcon from '@/assets/icons/icon-park-solid_trend_down.svg'
 import TrendIcon from '@/assets/icons/icon-park-solid_trend.svg'
+import TrendDownIcon from '@/assets/icons/icon-park-solid_trend_down.svg'
 import TrendUpIcon from '@/assets/icons/icon-park-solid_trend_up.svg'
 import MoneyIcon from '@/assets/icons/original_ic_basic_outline.svg'
 import { Meta, MetaContent, MetaExtra, MetaTitle } from '@/components/meta'
-import Recent30DaysChart from '@/features/price-tracker/components/recent-30-days-chart'
 import { Button } from '@/components/shadcn/button'
-import PromotionAlertTemplate from '@/features/price-tracker/components/promotion-alert/promotion-alert-template'
-import { PRICE_TRACKER_PROMOTIONS } from '@/features/price-tracker/constants'
-import BottomSheet from '@/components/bottom-sheet'
 import ExchangeRateGameBottomSheet from '@/features/price-tracker/components/exchange-rate-game-bottom-sheet'
+import PromotionAlertTemplate from '@/features/price-tracker/components/promotion-alert/promotion-alert-template'
+import Recent30DaysChart from '@/features/price-tracker/components/recent-30-days-chart'
+import { PRICE_TRACKER_PROMOTIONS } from '@/features/price-tracker/constants'
 
 const ExchangeRateDetailPage = () => {
   const promotion = PRICE_TRACKER_PROMOTIONS.find(
