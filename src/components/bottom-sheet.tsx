@@ -13,6 +13,7 @@ type BottomSheetProps = {
   maskClosable?: boolean
   height?: number | string
   handleOnly?: boolean
+  style?: React.CSSProperties
 }
 
 const BottomSheet = ({
@@ -21,6 +22,7 @@ const BottomSheet = ({
   children,
   onClose,
   height,
+  style,
   maskClosable = true,
 }: BottomSheetProps) => {
   return (
@@ -32,10 +34,10 @@ const BottomSheet = ({
         />
         <Drawer.Content
           className={cn(
-            'fixed inset-x-0 bottom-0 z-50 mx-auto mt-24 h-[50%] max-w-[460px] overflow-hidden rounded-t-2xl bg-white px-4 outline-none',
+            'fixed inset-x-0 bottom-0 z-50 mx-auto mt-24 h-[50%] max-w-[460px] overflow-hidden rounded-t-2xl bg-white px-4 outline-none ',
             className
           )}
-          style={{ height }}
+          style={{ height, ...style }}
         >
           <div className="mx-auto w-full">{children}</div>
         </Drawer.Content>

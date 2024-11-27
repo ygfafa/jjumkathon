@@ -17,6 +17,8 @@ import Recent30DaysChart from '@/features/price-tracker/components/recent-30-day
 import { Button } from '@/components/shadcn/button'
 import PromotionAlertTemplate from '@/features/price-tracker/components/promotion-alert/promotion-alert-template'
 import { PRICE_TRACKER_PROMOTIONS } from '@/features/price-tracker/constants'
+import BottomSheet from '@/components/bottom-sheet'
+import ExchangeRateGameBottomSheet from '@/features/price-tracker/components/exchange-rate-game-bottom-sheet'
 
 const ExchangeRateDetailPage = () => {
   const promotion = PRICE_TRACKER_PROMOTIONS.find(
@@ -72,6 +74,7 @@ const ExchangeRateDetailPage = () => {
           </div>
         )}
       </PageBody>
+      <ExchangeRateGameBottomSheet />
     </Page>
   )
 }
