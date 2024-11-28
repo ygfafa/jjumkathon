@@ -8,10 +8,7 @@ import {
 } from '@/components/meta'
 
 import LivingBenefitsIcon from '@/assets/icons/living_benefits.svg'
-import {
-  PriceTrackerAvatarWrapper,
-  PriceTrackerContentWrapper,
-} from './price-tracker-content-template'
+
 import Link from 'next/link'
 
 const DUMMY_DATA = [
@@ -35,13 +32,13 @@ const DUMMY_DATA = [
 
 const LivingBenefits = () => {
   return (
-    <PriceTrackerContentWrapper>
+    <div className="flex flex-col gap-y-32 pb-12">
       {DUMMY_DATA.map((data, index) => (
         <Link href="https://naver.com" key={index}>
           <Meta>
-            <PriceTrackerAvatarWrapper>
+            <div className="w-[40px] h-[40px] bg-gray-100 flex-shrink-0 rounded-full flex justify-center items-center">
               <LivingBenefitsIcon />
-            </PriceTrackerAvatarWrapper>
+            </div>
             <MetaContent>
               <MetaTitle className="text-primary">{data.title}</MetaTitle>
               <MetaDescription className="font-semibold">
@@ -54,7 +51,7 @@ const LivingBenefits = () => {
           </Meta>
         </Link>
       ))}
-    </PriceTrackerContentWrapper>
+    </div>
   )
 }
 
