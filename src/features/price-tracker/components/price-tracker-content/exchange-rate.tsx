@@ -5,7 +5,7 @@ import {
   MetaExtra,
   MetaTitle,
 } from '@/components/meta'
-import { Button } from '@/components/shadcn/button'
+import ChevronRightIcon from '@/assets/icons/chevron-right.svg'
 
 import MoneyBagGreen from '@/assets/icons/money_bag_green.svg'
 import {
@@ -13,6 +13,7 @@ import {
   PriceTrackerContentWrapper,
   PriceTrackerRateWrapper,
 } from './price-tracker-content-template'
+import Link from 'next/link'
 
 const DUMMY_DATA = [
   {
@@ -45,27 +46,32 @@ const ExchangeRate = () => {
   return (
     <PriceTrackerContentWrapper>
       {DUMMY_DATA.map((data, index) => (
-        <Meta key={index}>
-          <PriceTrackerAvatarWrapper>
-            <MoneyBagGreen />
-          </PriceTrackerAvatarWrapper>
-          <MetaContent>
-            <MetaTitle>
-              <span className="font-bold">{data.nation}</span> {data.currency}
-            </MetaTitle>
-            <MetaDescription>
-              <span className="font-bold mr-8">
-                {data.price.toLocaleString()}원{' '}
-              </span>
-              <PriceTrackerRateWrapper up={data.rate > 0}>
-                {data.rate}%
-              </PriceTrackerRateWrapper>
-            </MetaDescription>
-          </MetaContent>
-          <MetaExtra className="flex-shrink-0">
-            <Button size="sm">알림받기</Button>
-          </MetaExtra>
-        </Meta>
+        <Link
+          href={`/price-tracker/exchange-rates/${data.currency}`}
+          key={index}
+        >
+          <Meta>
+            <PriceTrackerAvatarWrapper>
+              <MoneyBagGreen />
+            </PriceTrackerAvatarWrapper>
+            <MetaContent>
+              <MetaTitle>
+                <span className="font-bold">{data.nation}</span> {data.currency}
+              </MetaTitle>
+              <MetaDescription>
+                <span className="font-bold mr-8">
+                  {data.price.toLocaleString()}원{' '}
+                </span>
+                <PriceTrackerRateWrapper up={data.rate > 0}>
+                  {data.rate}%
+                </PriceTrackerRateWrapper>
+              </MetaDescription>
+            </MetaContent>
+            <MetaExtra>
+              <ChevronRightIcon />
+            </MetaExtra>
+          </Meta>
+        </Link>
       ))}
     </PriceTrackerContentWrapper>
   )

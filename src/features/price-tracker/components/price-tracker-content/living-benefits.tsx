@@ -1,3 +1,4 @@
+import ChevronRightIcon from '@/assets/icons/chevron-right.svg'
 import {
   Meta,
   MetaContent,
@@ -5,13 +6,13 @@ import {
   MetaExtra,
   MetaTitle,
 } from '@/components/meta'
-import { Button } from '@/components/shadcn/button'
 
 import LivingBenefitsIcon from '@/assets/icons/living_benefits.svg'
 import {
   PriceTrackerAvatarWrapper,
   PriceTrackerContentWrapper,
 } from './price-tracker-content-template'
+import Link from 'next/link'
 
 const DUMMY_DATA = [
   {
@@ -36,20 +37,22 @@ const LivingBenefits = () => {
   return (
     <PriceTrackerContentWrapper>
       {DUMMY_DATA.map((data, index) => (
-        <Meta key={index}>
-          <PriceTrackerAvatarWrapper>
-            <LivingBenefitsIcon />
-          </PriceTrackerAvatarWrapper>
-          <MetaContent>
-            <MetaTitle className="text-primary">{data.title}</MetaTitle>
-            <MetaDescription className="font-semibold">
-              {data.description}
-            </MetaDescription>
-          </MetaContent>
-          <MetaExtra className="flex-shrink-0">
-            <Button size="sm">혜택받기</Button>
-          </MetaExtra>
-        </Meta>
+        <Link href="https://naver.com" key={index}>
+          <Meta>
+            <PriceTrackerAvatarWrapper>
+              <LivingBenefitsIcon />
+            </PriceTrackerAvatarWrapper>
+            <MetaContent>
+              <MetaTitle className="text-primary">{data.title}</MetaTitle>
+              <MetaDescription className="font-semibold">
+                {data.description}
+              </MetaDescription>
+            </MetaContent>
+            <MetaExtra>
+              <ChevronRightIcon />
+            </MetaExtra>
+          </Meta>
+        </Link>
       ))}
     </PriceTrackerContentWrapper>
   )

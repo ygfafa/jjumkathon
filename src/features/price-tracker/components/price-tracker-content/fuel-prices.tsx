@@ -1,7 +1,9 @@
+import ChevronRightIcon from '@/assets/icons/chevron-right.svg'
 import {
   Meta,
   MetaContent,
   MetaDescription,
+  MetaExtra,
   MetaTitle,
 } from '@/components/meta'
 
@@ -10,6 +12,7 @@ import {
   PriceTrackerAvatarWrapper,
   PriceTrackerContentWrapper,
 } from './price-tracker-content-template'
+import Link from 'next/link'
 
 const DUMMY_DATA = [
   {
@@ -34,19 +37,24 @@ const FuelPrices = () => {
   return (
     <PriceTrackerContentWrapper>
       {DUMMY_DATA.map((data, index) => (
-        <Meta key={index}>
-          <PriceTrackerAvatarWrapper>
-            <FuelPricesIcon />
-          </PriceTrackerAvatarWrapper>
-          <MetaContent>
-            <MetaTitle>
-              <span className="font-bold">{data.title}</span>
-            </MetaTitle>
-            <MetaDescription className="font-bold">
-              {data.price.toLocaleString()}원{' '}
-            </MetaDescription>
-          </MetaContent>
-        </Meta>
+        <Link href={`/price-tracker/fuel-prices/${index}`} key={index}>
+          <Meta key={index}>
+            <PriceTrackerAvatarWrapper>
+              <FuelPricesIcon />
+            </PriceTrackerAvatarWrapper>
+            <MetaContent>
+              <MetaTitle>
+                <span className="font-bold">{data.title}</span>
+              </MetaTitle>
+              <MetaDescription className="font-bold">
+                {data.price.toLocaleString()}원{' '}
+              </MetaDescription>
+            </MetaContent>
+            <MetaExtra>
+              <ChevronRightIcon />
+            </MetaExtra>
+          </Meta>
+        </Link>
       ))}
     </PriceTrackerContentWrapper>
   )

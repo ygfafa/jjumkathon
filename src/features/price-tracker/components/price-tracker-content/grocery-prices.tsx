@@ -1,3 +1,4 @@
+import ChevronRightIcon from '@/assets/icons/chevron-right.svg'
 import {
   Meta,
   MetaContent,
@@ -5,7 +6,6 @@ import {
   MetaExtra,
   MetaTitle,
 } from '@/components/meta'
-import { Button } from '@/components/shadcn/button'
 
 import GroceryPricesIcon from '@/assets/icons/grocery_prices.svg'
 import {
@@ -13,6 +13,7 @@ import {
   PriceTrackerContentWrapper,
   PriceTrackerRateWrapper,
 } from './price-tracker-content-template'
+import Link from 'next/link'
 
 const DUMMY_DATA = [
   {
@@ -45,27 +46,30 @@ const GroceryPrices = () => {
   return (
     <PriceTrackerContentWrapper>
       {DUMMY_DATA.map((data, index) => (
-        <Meta key={index}>
-          <PriceTrackerAvatarWrapper>
-            <GroceryPricesIcon />
-          </PriceTrackerAvatarWrapper>
-          <MetaContent>
-            <MetaTitle>
-              <span className="font-bold">{data.title}</span> {data.description}
-            </MetaTitle>
-            <MetaDescription>
-              <span className="font-bold mr-8">
-                {data.price.toLocaleString()}원{' '}
-              </span>
-              <PriceTrackerRateWrapper up={data.rate > 0}>
-                {data.rate}%
-              </PriceTrackerRateWrapper>
-            </MetaDescription>
-          </MetaContent>
-          <MetaExtra className="flex-shrink-0">
-            <Button size="sm">알림받기</Button>
-          </MetaExtra>
-        </Meta>
+        <Link href={`/price-tracker/grocery-prices/${index}`} key={index}>
+          <Meta key={index}>
+            <PriceTrackerAvatarWrapper>
+              <GroceryPricesIcon />
+            </PriceTrackerAvatarWrapper>
+            <MetaContent>
+              <MetaTitle>
+                <span className="font-bold">{data.title}</span>{' '}
+                {data.description}
+              </MetaTitle>
+              <MetaDescription>
+                <span className="font-bold mr-8">
+                  {data.price.toLocaleString()}원{' '}
+                </span>
+                <PriceTrackerRateWrapper up={data.rate > 0}>
+                  {data.rate}%
+                </PriceTrackerRateWrapper>
+              </MetaDescription>
+            </MetaContent>
+            <MetaExtra>
+              <ChevronRightIcon />
+            </MetaExtra>
+          </Meta>
+        </Link>
       ))}
     </PriceTrackerContentWrapper>
   )
