@@ -11,7 +11,7 @@ const PageBottomFixedArea = ({
   return (
     <div
       className={cn(
-        'fixed bottom-0 w-full h-[88px] px-20 py-16 max-w-[460px]',
+        'fixed bottom-0 w-full h-[88px] px-20 py-16 max-w-[460px] bg-white',
         className
       )}
       style={{ height: PAGE_BOTTOM_FIXED_AREA_HEIGHT, ...style }}
