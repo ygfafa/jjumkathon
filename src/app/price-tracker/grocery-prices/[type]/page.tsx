@@ -10,11 +10,9 @@ import DetailSummaryCard from '@/features/price-tracker/components/detail-summar
 import PromotionAlertTemplate from '@/features/price-tracker/components/promotion-alert/promotion-alert-template'
 import Recent30DaysChart from '@/features/price-tracker/components/recent-30-days-chart'
 import { PRICE_TRACKER_PROMOTIONS } from '@/features/price-tracker/constants'
+import Image from 'next/image'
 
 const ExchangeRateDetailPage = () => {
-  const promotion = PRICE_TRACKER_PROMOTIONS.find(
-    (promotion) => promotion.target === 'exchange-rates'
-  )
   return (
     <Page>
       <PageHeader title="생활물가 알리미" />
@@ -22,16 +20,24 @@ const ExchangeRateDetailPage = () => {
       <PageBody noBodyPadding>
         <div className="px-20 w-full">
           <ChipButton selected className="mb-4">
-            환율
+            식재료
           </ChipButton>
           <div className="mb-32">
-            <h2 className="text-24 font-bold">미국 USD</h2>
+            <h2 className="text-24 font-bold">삼겹살 100g</h2>
             <p className="text-16 font-semibold text-primary">
               어제보다 12.18원 비싸요
             </p>
           </div>
 
-          <DetailSummaryCard />
+          <DetailSummaryCard
+            type="가격"
+            recent30DaysAvg={1000}
+            recent30DaysMax={1000}
+            recent30DaysMaxDate="11.11.11"
+            recent30DaysMin={1000}
+            recent30DaysMinDate="11.11.11"
+            today={1200}
+          />
 
           <p className="mt-24 mb-12 text-16 text-gray-500">
             최근 30일간의 추이를 보여드려요
@@ -44,7 +50,8 @@ const ExchangeRateDetailPage = () => {
             <MoneyIcon />
             <MetaContent>
               <MetaTitle className="text-gray-500">
-                환율 <b className="font-bold text-green-500">정보가 바뀌면 </b>
+                식재료{' '}
+                <b className="font-bold text-green-500">가격이 바뀌면 </b>
                 알려드릴까요?
               </MetaTitle>
             </MetaContent>
@@ -54,13 +61,63 @@ const ExchangeRateDetailPage = () => {
           </Meta>
         </div>
 
-        {promotion && (
-          <div className="flex-1 px-18 bg-gray-50 py-24">
-            <PromotionAlertTemplate {...promotion} />
+        <section className="px-20 py-32 bg-gray-50">
+          <h3 className="mb-6 text-20 font-bold">정육각 삼겹살데이 기획전</h3>
+          <p className="text-16 text-primary mb-20">
+            시중가 보다 2,900원 이상 저렴해요
+          </p>
+          <div className="flex gap-16 overflow-scroll scrollbar-hide px-20">
+            <ProductCard
+              image="/images/meet-1.png"
+              title="초신선 돼지 삼겹살 + 목살 세트"
+              description="27,600 원 (900g)"
+            />
+            <ProductCard
+              image="/images/meet-2.png"
+              title="초신선 무항생제 돼지 삼겹살"
+              description="31,400 원 (600g)"
+            />
+            <ProductCard
+              image="/images/meet-3.png"
+              title="초신선 돼지 삼겹살 + 목살 세트"
+              description="19,900 원"
+            />
+            <ProductCard
+              image="/images/meet-1.png"
+              title="초신선 돼지 삼겹살 + 목살 세트"
+              description="27,600 원 (900g)"
+            />
+            <ProductCard
+              image="/images/meet-2.png"
+              title="초신선 무항생제 돼지 삼겹살"
+              description="31,400 원 (600g)"
+            />
+            <ProductCard
+              image="/images/meet-3.png"
+              title="초신선 돼지 삼겹살 + 목살 세트"
+              description="19,900 원"
+            />
           </div>
-        )}
+        </section>
       </PageBody>
     </Page>
+  )
+}
+
+type ProductCardProps = {
+  image: string
+  title: string
+  description: string
+}
+const ProductCard = ({ description, image, title }: ProductCardProps) => {
+  return (
+    <div className="flex-shrink-0 max-w-[140px]">
+      <div className="mb-16">
+        <Image src={image} alt={title} width={140} height={140} />
+      </div>
+      <span className="break-keep text-[#3A4047]">{title}</span>
+      <p className="text-12 text-[#87929E]">{description}</p>
+    </div>
   )
 }
 
