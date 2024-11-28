@@ -79,7 +79,7 @@ const GameLandingPage = async ({ params }: GameLandingPageProps) => {
       </PageBody>
 
       <PageBottomFixedArea className="bg-transparent">
-        <Link href="/games/exchange-rate/play">
+        <Link href={`/games/${subClassification}/play`}>
           <Button size="lg" className="w-full">
             게임 참여하기
           </Button>
