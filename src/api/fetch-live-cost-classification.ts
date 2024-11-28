@@ -1,4 +1,5 @@
-import qs from 'querystring'
+import qs from 'qs'
+import { SubClassification } from './get-reward-content'
 
 export type LiveCostNotiItem = {
   id: number
@@ -17,13 +18,16 @@ export type ClassificationType = 'EXCHANGE_RATE' | 'FOOD' | 'OIL'
 
 export type LiveCostNotiQueryParams = {
   classification?: ClassificationType
+  subClassification?: SubClassification
+  locations?: string
 }
 export const fetchLiveCostClassification = async (
   params?: LiveCostNotiQueryParams
 ): Promise<LiveCostNotiResponse> => {
   const response = await fetch(
     `http://192.168.103.223:8080/api/v1/live-cost/classification?${qs.stringify(
-      params
+      params,
+      { skipNulls: true }
     )}`,
     { cache: 'no-store' }
   )

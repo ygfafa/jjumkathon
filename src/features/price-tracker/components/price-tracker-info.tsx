@@ -1,26 +1,28 @@
 import {
+  ClassificationType,
+  fetchLiveCostClassification,
+} from '@/api/fetch-live-cost-classification'
+import {
   Meta,
   MetaContent,
   MetaDescription,
   MetaExtra,
   MetaTitle,
 } from '@/components/meta'
-import {
-  ClassificationType,
-  fetchLiveCostClassification,
-  LiveCostNotiResponse,
-} from '@/api/fetch-live-cost-classification'
 
 import Link from 'next/link'
 
 import ChevronRightIcon from '@/assets/icons/chevron-right.svg'
 
-import MoneyBagGreen from '@/assets/icons/money_bag_green.svg'
+import { SubClassification } from '@/api/get-reward-content'
 import CalcIcon from '@/assets/icons/grocery_prices.svg'
+import MoneyBagGreen from '@/assets/icons/money_bag_green.svg'
 import OilIcon from '@/assets/icons/original_ic_basic_outline.svg'
 
 type PriceTackerInfoProps = {
   type: ClassificationType
+  subType?: SubClassification
+  locations?: string
 }
 
 const ICON: Record<ClassificationType, React.ReactNode> = {
@@ -29,9 +31,15 @@ const ICON: Record<ClassificationType, React.ReactNode> = {
   OIL: <OilIcon />,
 }
 
-const PriceTackerInfo = async ({ type }: PriceTackerInfoProps) => {
+const PriceTackerInfo = async ({
+  type,
+  subType,
+  locations,
+}: PriceTackerInfoProps) => {
   const data = await fetchLiveCostClassification({
     classification: type,
+    subClassification: subType,
+    locations,
   })
 
   return (
