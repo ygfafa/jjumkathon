@@ -11,7 +11,7 @@ import LivingBenefitsIcon from '@/assets/icons/living_benefits.svg'
 
 import Link from 'next/link'
 
-const DUMMY_DATA = [
+const items = [
   {
     title: '생활 속 급전 필요할 때',
     description: '비상금 대출비교',
@@ -28,13 +28,17 @@ const DUMMY_DATA = [
     title: '출퇴근없이',
     description: '월급만큼 버는 N잡',
   },
+  {
+    title: '최대 48만원 현금으로 돌려받는',
+    description: '인터넷 지원금 이벤트',
+  },
 ]
 
 const LivingBenefits = () => {
   return (
-    <div className="flex flex-col gap-y-32 pb-12">
-      {DUMMY_DATA.map((data, index) => (
-        <Link href="https://naver.com" key={index}>
+    <div className="flex flex-col gap-y-32 pb-24">
+      {items.map((data, index) => (
+        <Link href="/price-tracker/living-benefits" key={index}>
           <Meta>
             <div className="w-[40px] h-[40px] bg-gray-100 flex-shrink-0 rounded-full flex justify-center items-center">
               <LivingBenefitsIcon />

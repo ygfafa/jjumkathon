@@ -54,10 +54,4 @@ export const PRICE_TRACKER_PROMOTIONS: {
     target: 'fuel-prices',
     link: '/',
   },
-  {
-    title: '최대 48만원 현금으로 돌려받는',
-    description: '인터넷 지원금 이벤트',
-    target: 'living-benefits',
-    link: '/',
-  },
 ]

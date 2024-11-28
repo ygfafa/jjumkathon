@@ -13,7 +13,11 @@ const PromotionAlert = () => {
 
   if (!currentPromotion) return null
 
-  return <PromotionAlertTemplate {...currentPromotion} />
+  return (
+    <div className="flex-1 px-18 bg-gray-50 py-24">
+      <PromotionAlertTemplate {...currentPromotion} />
+    </div>
+  )
 }
 
 export default PromotionAlert
