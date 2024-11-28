@@ -15,6 +15,7 @@ export type SubClassification =
   | 'JPY'
   | 'CNY'
   | 'EUR'
+  | 'PORK'
 export type RewardContentItem = {
   subClassification: SubClassification
   voteFlag: boolean
