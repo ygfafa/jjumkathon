@@ -1,21 +1,12 @@
-import EnvelopeIcon from '@/assets/icons/envelope.svg'
-import MoneyIcon from '@/assets/icons/original_ic_basic_outline.svg'
 import Page from '@/components/layouts/page'
 import { PageBody } from '@/components/layouts/page-body'
-import PageBottomFixedArea from '@/components/layouts/page-bottom-fixed-area'
-import {
-  PageHeader,
-  PageHeaderLeftSlot,
-  PageHeaderTitle,
-} from '@/components/layouts/page-header'
-import PageBackButton from '@/components/page-back-button'
-import { Button } from '@/components/shadcn/button'
+import { PageHeader } from '@/components/layouts/page-header'
 import Image from 'next/image'
 
 import NoIcon from '@/assets/icons/no.svg'
 import YesIcon from '@/assets/icons/yes.svg'
+import CountdownTimer from '@/components/count-down-timer'
 import { cn } from '@/lib/utils'
-import CountdownTimer from '@/components/couter-down-timer'
 import dayjs from 'dayjs'
 
 const ExchangeRateGamePlayPage = () => {
@@ -28,11 +19,7 @@ const ExchangeRateGamePlayPage = () => {
         background: 'linear-gradient(180deg, #6403DF 11.96%, #240151 96.81%)',
       }}
     >
-      <PageHeader className="bg-transparent">
-        <PageHeaderLeftSlot>
-          <PageBackButton className="text-white" />
-        </PageHeaderLeftSlot>
-      </PageHeader>
+      <PageHeader title="" className="bg-transparent" />
 
       <PageBody>
         <h2 className="font-bold text-20 text-white  mb-8">

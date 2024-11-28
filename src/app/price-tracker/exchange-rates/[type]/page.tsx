@@ -1,12 +1,7 @@
 import ChipButton from '@/components/chip-button'
 import Page from '@/components/layouts/page'
 import { PageBody } from '@/components/layouts/page-body'
-import {
-  PageHeader,
-  PageHeaderLeftSlot,
-  PageHeaderTitle,
-} from '@/components/layouts/page-header'
-import PageBackButton from '@/components/page-back-button'
+import { PageHeader } from '@/components/layouts/page-header'
 
 import TrendIcon from '@/assets/icons/icon-park-solid_trend.svg'
 import TrendDownIcon from '@/assets/icons/icon-park-solid_trend_down.svg'
@@ -25,12 +20,7 @@ const ExchangeRateDetailPage = () => {
   )
   return (
     <Page>
-      <PageHeader>
-        <PageHeaderLeftSlot>
-          <PageBackButton />
-        </PageHeaderLeftSlot>
-        <PageHeaderTitle>생활물가 알리미</PageHeaderTitle>
-      </PageHeader>
+      <PageHeader title="생활물가 알리미" />
 
       <PageBody noBodyPadding>
         <div className="px-20 w-full">

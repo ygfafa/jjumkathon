@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
+// import Initializer from './initializer'
 
 export const metadata: Metadata = {
   title: '',
@@ -21,6 +22,7 @@ export default function RootLayout({
       />
       <body>
         <div className="max-w-[460px] w-full mx-auto border-l border-r min-h-full flex flex-col">
+          {/* <Initializer /> */}
           {children}
         </div>
       </body>
