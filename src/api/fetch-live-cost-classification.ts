@@ -1,12 +1,4 @@
-const a = {
-  baseDate: '2024-11-28',
-  list: [
-    { id: 1, name: '미국', unit: 'USD', amount: 1403, diffRate: -0.35 },
-    { id: 2, name: '유럽', unit: 'EUR', amount: 1450, diffRate: 0.15 },
-    { id: 3, name: '중국', unit: 'CNY', amount: 192, diffRate: -0.11 },
-    { id: 4, name: '일본', unit: 'JPY', amount: 855, diffRate: -0.25 },
-  ],
-}
+import qs from 'querystring'
 
 export type LiveCostNotiItem = {
   id: number
@@ -20,11 +12,16 @@ export type LiveCostNotiResponse = {
   list: LiveCostNotiItem[]
 }
 
+export type LiveCostNotiQueryParams = {
+  classification?: string
+}
 export const fetchLiveCostClassification = async (
-  classification: string
+  params?: LiveCostNotiQueryParams
 ): Promise<LiveCostNotiResponse> => {
   const response = await fetch(
-    `http://192.168.103.223:8080/api/v1/live-cost/classification?classification=${classification}`,
+    `http://192.168.103.223:8080/api/v1/live-cost/classification?${qs.stringify(
+      params
+    )}`,
     { cache: 'no-store' }
   )
   if (!response.ok) {

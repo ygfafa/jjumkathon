@@ -10,23 +10,6 @@ import {
   YAxis,
 } from 'recharts'
 
-const generateExchangeRateData = () => {
-  const data = []
-  const baseDate = new Date()
-  for (let i = 0; i < 30; i++) {
-    const date = new Date(baseDate)
-    date.setDate(baseDate.getDate() - (29 - i)) // 30일 전부터 오늘까지
-    const rate = Math.random() * (1300 - 1100) + 1100 // 1100 ~ 1300 사이의 랜덤값
-    data.push({
-      date: date.toISOString().split('T')[0], // YYYY-MM-DD 형식
-      rate: parseFloat(rate.toFixed(2)), // 소수점 둘째 자리까지
-    })
-  }
-  return data
-}
-
-const data = generateExchangeRateData()
-
 const CustomTooltip = (data: TooltipProps<number, string>) => {
   if (data.active && data.payload && data.payload.length) {
     return (
@@ -42,7 +25,14 @@ const CustomTooltip = (data: TooltipProps<number, string>) => {
   return null
 }
 
-const Recent30DaysChart = () => {
+type ChartItem = {
+  date: string
+  rate: number
+}
+type Recent30DaysChartProps = {
+  data: ChartItem[]
+}
+const Recent30DaysChart = ({ data }: Recent30DaysChartProps) => {
   return (
     <div className="w-full h-[200px] border-t border-dashed">
       <ResponsiveContainer width="100%" height="100%">

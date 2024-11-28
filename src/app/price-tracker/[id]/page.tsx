@@ -6,22 +6,32 @@ import { PageHeader } from '@/components/layouts/page-header'
 
 import { Meta, MetaContent, MetaExtra, MetaTitle } from '@/components/meta'
 import { Button } from '@/components/shadcn/button'
+import { fetchLiveCostClassificationDetail } from '@/api/fetch-live-cost-classification-detail'
 import AdListCard from '@/features/price-tracker/components/ad-list-card'
 import DetailSummaryCard from '@/features/price-tracker/components/detail-summary-card'
 import Recent30DaysChart from '@/features/price-tracker/components/recent-30-days-chart'
+import dayjs from 'dayjs'
 
-const ExchangeRateDetailPage = () => {
+type PriceTrackerDetailPageProps = {
+  params: Promise<{ id: string }>
+}
+const PriceTrackerDetailPage = async ({
+  params,
+}: PriceTrackerDetailPageProps) => {
+  const { id } = await params
+
+  const data = await fetchLiveCostClassificationDetail(id)
+  const chartData = data.list.map((d) => ({ date: d.baseDate, rate: d.amount }))
   return (
     <Page>
       <PageHeader title="생활물가 알리미" />
-
       <PageBody noBodyPadding>
         <div className="px-20 w-full">
           <ChipButton selected className="mb-4">
             환율
           </ChipButton>
           <div className="mb-32">
-            <h2 className="text-24 font-bold">미국 USD</h2>
+            <h2 className="text-24 font-bold">미국 {data.unit}</h2>
             <p className="text-16 font-semibold text-primary">
               어제보다 12.18원 비싸요
             </p>
@@ -29,18 +39,18 @@ const ExchangeRateDetailPage = () => {
 
           <DetailSummaryCard
             type="환율"
-            recent30DaysAvg={1000}
-            recent30DaysMax={1000}
-            recent30DaysMaxDate="11.11.11"
-            recent30DaysMin={1000}
-            recent30DaysMinDate="11.11.11"
-            today={1200}
+            recent30DaysAvg={data.avgAmount}
+            recent30DaysMax={data.highAmount}
+            recent30DaysMaxDate={dayjs(data.highDate).format('YY.MM.DD')}
+            recent30DaysMin={data.lowAmount}
+            recent30DaysMinDate={dayjs(data.lowDate).format('YY.MM.DD')}
+            today={data.amount}
           />
 
           <p className="mt-24 mb-12 text-16 text-gray-500">
             최근 30일간의 추이를 보여드려요
           </p>
-          <Recent30DaysChart />
+          <Recent30DaysChart data={chartData} />
         </div>
         <div className="px-20 py-12 w-full bg-[#E9F7E8]">
           <Meta>
@@ -77,4 +87,4 @@ const ExchangeRateDetailPage = () => {
   )
 }
 
-export default ExchangeRateDetailPage
+export default PriceTrackerDetailPage

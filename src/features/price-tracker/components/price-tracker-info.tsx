@@ -5,7 +5,7 @@ import {
   MetaExtra,
   MetaTitle,
 } from '@/components/meta'
-import { LiveCostNotiResponse } from '@/features/price-tracker/api/fetch-live-cost-classification'
+import { LiveCostNotiResponse } from '@/api/fetch-live-cost-classification'
 
 import Link from 'next/link'
 
@@ -19,9 +19,9 @@ type PriceTackerInfoProps = {
 
 const PriceTackerInfo = ({ data }: PriceTackerInfoProps) => {
   return (
-    <div className="flex flex-col gap-y-32 pb-12">
+    <div className="flex flex-col gap-y-32 pb-24">
       {data.list.map((data, index) => (
-        <Link href={`/price-tracker/exchange-rates/${data.id}`} key={index}>
+        <Link href={`/price-tracker/${data.id}`} key={index}>
           <Meta>
             <div className="w-[40px] h-[40px] bg-gray-100 flex-shrink-0 rounded-full flex justify-center items-center">
               <MoneyBagGreen />
