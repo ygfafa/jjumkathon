@@ -5,7 +5,11 @@ import {
   MetaExtra,
   MetaTitle,
 } from '@/components/meta'
-import { LiveCostNotiResponse } from '@/api/fetch-live-cost-classification'
+import {
+  ClassificationType,
+  fetchLiveCostClassification,
+  LiveCostNotiResponse,
+} from '@/api/fetch-live-cost-classification'
 
 import Link from 'next/link'
 
@@ -14,10 +18,14 @@ import ChevronRightIcon from '@/assets/icons/chevron-right.svg'
 import MoneyBagGreen from '@/assets/icons/money_bag_green.svg'
 
 type PriceTackerInfoProps = {
-  data: LiveCostNotiResponse
+  type: ClassificationType
 }
 
-const PriceTackerInfo = ({ data }: PriceTackerInfoProps) => {
+const PriceTackerInfo = async ({ type }: PriceTackerInfoProps) => {
+  const data = await fetchLiveCostClassification({
+    classification: type,
+  })
+
   return (
     <div className="flex flex-col gap-y-32 pb-24">
       {data.list.map((data, index) => (

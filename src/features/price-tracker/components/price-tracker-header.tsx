@@ -4,10 +4,7 @@ import dayjs from 'dayjs'
 import { PRICE_TRACKER_TYPE } from '../constants'
 import useCurrentPriceTrackerType from '../hooks/use-current-price-tracker-type'
 
-type PriceTrackerHeaderProps = {
-  baseDate: string
-}
-const PriceTrackerHeader = ({ baseDate }: PriceTrackerHeaderProps) => {
+const PriceTrackerHeader = () => {
   const { currentType } = useCurrentPriceTrackerType()
 
   const title = PRICE_TRACKER_TYPE.find(
@@ -16,7 +13,7 @@ const PriceTrackerHeader = ({ baseDate }: PriceTrackerHeaderProps) => {
   return (
     <section className="mb-20">
       <p className="text-blue-500 text-16 font-semibold">
-        {dayjs(baseDate).format('YYYY.MM.DD')} 기준
+        {dayjs().format('YYYY.MM.DD')} 기준
       </p>
       <h3 className="whitespace-pre-line text-24 font-bold mb-32">{title}</h3>
 

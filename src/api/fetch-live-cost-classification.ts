@@ -12,8 +12,10 @@ export type LiveCostNotiResponse = {
   list: LiveCostNotiItem[]
 }
 
+export type ClassificationType = 'EXCHANGE_RATE' | 'FOOD' | 'OIL'
+
 export type LiveCostNotiQueryParams = {
-  classification?: string
+  classification?: ClassificationType
 }
 export const fetchLiveCostClassification = async (
   params?: LiveCostNotiQueryParams

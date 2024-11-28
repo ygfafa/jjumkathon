@@ -26,6 +26,7 @@ const GameChoiceButtons = ({ subClassification }: GameChoiceButtonsProps) => {
       setOpen(true)
     } catch (error) {
       alert('살살 다뤄주세요.')
+      setOpen(true)
     }
   }
 

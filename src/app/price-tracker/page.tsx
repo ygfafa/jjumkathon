@@ -9,15 +9,13 @@ import { Suspense } from 'react'
 
 import LivingBenefits from '@/features/price-tracker/components/living-benefits'
 import PriceTackerInfo from '@/features/price-tracker/components/price-tracker-info'
+import { PriceTackerType } from '@/features/price-tracker/constants'
 type PriceTrackerPageProps = {
-  searchParams: Promise<{ type: string }>
+  searchParams: Promise<{ type: PriceTackerType }>
 }
 
 const PriceTrackerPage = async ({ searchParams }: PriceTrackerPageProps) => {
   const params = await searchParams
-
-  const data = await fetchLiveCostClassification('EXCHANGE_RATE')
-  // const data = await fetchLiveCostClassification(params.type || 'EXCHANGE_RATE')
 
   return (
     <Page>
@@ -28,13 +26,15 @@ const PriceTrackerPage = async ({ searchParams }: PriceTrackerPageProps) => {
             <PriceTrackerFilterButtonGroup className="mb-24" />
           </Suspense>
           <Suspense>
-            <PriceTrackerHeader baseDate={data.baseDate} />
+            <PriceTrackerHeader />
           </Suspense>
 
           {params.type === 'living-benefits' ? (
             <LivingBenefits />
           ) : (
-            <PriceTackerInfo data={data} />
+            <Suspense>
+              <PriceTackerInfo type={params.type || 'EXCHANGE_RATE'} />
+            </Suspense>
           )}
         </div>
 
