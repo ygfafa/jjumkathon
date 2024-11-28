@@ -19,11 +19,18 @@ export type ClassificationType = 'EXCHANGE_RATE' | 'FOOD' | 'OIL'
 export type LiveCostNotiQueryParams = {
   classification?: ClassificationType
   subClassification?: SubClassification
-  locations?: string
+  location?: string
 }
 export const fetchLiveCostClassification = async (
   params?: LiveCostNotiQueryParams
 ): Promise<LiveCostNotiResponse> => {
+  console.log(
+    '###',
+    `http://192.168.103.223:8080/api/v1/live-cost/classification?${qs.stringify(
+      params,
+      { skipNulls: true }
+    )}`
+  )
   const response = await fetch(
     `http://192.168.103.223:8080/api/v1/live-cost/classification?${qs.stringify(
       params,

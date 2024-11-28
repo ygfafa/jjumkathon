@@ -13,8 +13,8 @@ import { PriceTackerType } from '@/features/price-tracker/constants'
 type PriceTrackerPageProps = {
   searchParams: Promise<{
     type: PriceTackerType
-    subType?: SubClassification
-    locations?: string
+    subClassification?: SubClassification
+    location?: string
   }>
 }
 
@@ -39,8 +39,8 @@ const PriceTrackerPage = async ({ searchParams }: PriceTrackerPageProps) => {
             <Suspense fallback={<div />}>
               <PriceTackerInfo
                 type={params.type || 'EXCHANGE_RATE'}
-                locations={params?.locations}
-                subType={params?.subType}
+                location={params?.location}
+                subClassification={params?.subClassification}
               />
             </Suspense>
           )}

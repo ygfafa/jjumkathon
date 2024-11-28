@@ -14,7 +14,7 @@ const PriceTrackerFilterButtonGroup = ({
   className,
   ...props
 }: PriceTrackerFilterButtonGroupProps) => {
-  const { updateType, currentType } = useCurrentPriceTrackerType()
+  const { currentType } = useCurrentPriceTrackerType()
 
   const { updateQuery } = useQuerySync()
 
@@ -25,17 +25,21 @@ const PriceTrackerFilterButtonGroup = ({
           key={key}
           selected={currentType === key}
           onClick={() => {
-            if (currentType === 'OIL') {
+            if (key === 'OIL') {
               updateQuery({
                 type: key,
                 subClassification: 'GASOLINE',
-                locations: 'GANGNAM_GU',
+                location: 'GANGNAM_GU',
               })
 
               return
             }
 
-            updateType(key)
+            updateQuery({
+              type: key,
+              subClassification: '',
+              location: '',
+            })
           }}
         >
           {label}

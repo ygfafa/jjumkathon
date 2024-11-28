@@ -35,10 +35,10 @@ const items = [
 const AddressSelectBottomSheet = () => {
   const { query, updateQuery } = useQuerySync()
 
-  const value = query.locations || items[0].value
+  const value = query.location || items[0].value
 
   const handleChange = (value: string) => {
-    updateQuery({ locations: value })
+    updateQuery({ location: value })
   }
   return <SelectDialog value={value} items={items} onChange={handleChange} />
 }

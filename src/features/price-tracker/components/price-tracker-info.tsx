@@ -21,8 +21,8 @@ import OilIcon from '@/assets/icons/original_ic_basic_outline.svg'
 
 type PriceTackerInfoProps = {
   type: ClassificationType
-  subType?: SubClassification
-  locations?: string
+  subClassification?: SubClassification
+  location?: string
 }
 
 const ICON: Record<ClassificationType, React.ReactNode> = {
@@ -33,13 +33,13 @@ const ICON: Record<ClassificationType, React.ReactNode> = {
 
 const PriceTackerInfo = async ({
   type,
-  subType,
-  locations,
+  subClassification,
+  location,
 }: PriceTackerInfoProps) => {
   const data = await fetchLiveCostClassification({
     classification: type,
-    subClassification: subType,
-    locations,
+    subClassification,
+    location,
   })
 
   return (
