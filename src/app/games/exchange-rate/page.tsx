@@ -11,6 +11,7 @@ import {
 import PageBackButton from '@/components/page-back-button'
 import { Button } from '@/components/shadcn/button'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const ExchangeRateGamePage = () => {
   return (
@@ -64,9 +65,11 @@ const ExchangeRateGamePage = () => {
       </PageBody>
 
       <PageBottomFixedArea>
-        <Button size="lg" className="w-full">
-          게임 참여하기
-        </Button>
+        <Link href="/games/exchange-rate/play">
+          <Button size="lg" className="w-full">
+            게임 참여하기
+          </Button>
+        </Link>
       </PageBottomFixedArea>
     </Page>
   )
