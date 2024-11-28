@@ -32,7 +32,7 @@ const PriceTrackerPage = async ({ searchParams }: PriceTrackerPageProps) => {
           {params.type === 'living-benefits' ? (
             <LivingBenefits />
           ) : (
-            <Suspense>
+            <Suspense fallback={<div />}>
               <PriceTackerInfo type={params.type || 'EXCHANGE_RATE'} />
             </Suspense>
           )}

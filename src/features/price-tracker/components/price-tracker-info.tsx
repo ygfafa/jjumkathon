@@ -16,9 +16,17 @@ import Link from 'next/link'
 import ChevronRightIcon from '@/assets/icons/chevron-right.svg'
 
 import MoneyBagGreen from '@/assets/icons/money_bag_green.svg'
+import CalcIcon from '@/assets/icons/grocery_prices.svg'
+import OilIcon from '@/assets/icons/original_ic_basic_outline.svg'
 
 type PriceTackerInfoProps = {
   type: ClassificationType
+}
+
+const ICON: Record<ClassificationType, React.ReactNode> = {
+  EXCHANGE_RATE: <MoneyBagGreen />,
+  FOOD: <CalcIcon />,
+  OIL: <OilIcon />,
 }
 
 const PriceTackerInfo = async ({ type }: PriceTackerInfoProps) => {
@@ -32,7 +40,7 @@ const PriceTackerInfo = async ({ type }: PriceTackerInfoProps) => {
         <Link href={`/price-tracker/${data.id}`} key={index}>
           <Meta>
             <div className="w-[40px] h-[40px] bg-gray-100 flex-shrink-0 rounded-full flex justify-center items-center">
-              <MoneyBagGreen />
+              {ICON[type]}
             </div>
             <MetaContent>
               <MetaTitle>

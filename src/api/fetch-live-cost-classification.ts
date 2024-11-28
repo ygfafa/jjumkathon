@@ -8,6 +8,7 @@ export type LiveCostNotiItem = {
   diffRate: number
 }
 export type LiveCostNotiResponse = {
+  classification: ClassificationType
   baseDate: string
   list: LiveCostNotiItem[]
 }
