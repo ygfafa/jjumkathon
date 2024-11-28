@@ -1,25 +1,37 @@
 'use client'
 
+import { SubClassification } from '@/api/get-reward-content'
+import { postRewardVote } from '@/api/post-reward-vote'
 import NoIcon from '@/assets/icons/no.svg'
 import YesIcon from '@/assets/icons/yes.svg'
 import { Button } from '@/components/shadcn/button'
-import { cn } from '@/lib/utils'
+import { cn, getUserId } from '@/lib/utils'
 import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog'
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 
-type Props = {}
+type GameChoiceButtonsProps = {
+  subClassification: SubClassification
+}
 
-const GameChoiceButtons = () => {
+const GameChoiceButtons = ({ subClassification }: GameChoiceButtonsProps) => {
   const [open, setOpen] = useState(false)
 
   const router = useRouter()
-  const handleVote = (up: boolean) => {
-    setOpen(true)
+  const handleVote = async (riseFlag: boolean) => {
+    const userId = getUserId()
+
+    try {
+      await postRewardVote({ riseFlag, userId, subClassification })
+      setOpen(true)
+    } catch (error) {
+      alert('살살 다뤄주세요.')
+    }
   }
 
   const handleClose = () => {
     setOpen(false)
+    router.refresh()
     router.replace('/games')
   }
 

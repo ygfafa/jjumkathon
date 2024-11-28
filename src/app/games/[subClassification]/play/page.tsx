@@ -3,13 +3,10 @@ import { PageBody } from '@/components/layouts/page-body'
 import { PageHeader } from '@/components/layouts/page-header'
 import Image from 'next/image'
 
-import NoIcon from '@/assets/icons/no.svg'
-import YesIcon from '@/assets/icons/yes.svg'
-import CountdownTimer from '@/components/count-down-timer'
-import { cn } from '@/lib/utils'
-import dayjs from 'dayjs'
 import { SubClassification } from '@/api/get-reward-content'
+import CountdownTimer from '@/components/count-down-timer'
 import GameChoiceButtons from '@/features/games/components/game-choice-buttons'
+import dayjs from 'dayjs'
 
 type GameLandingPageProps = {
   params: Promise<{ subClassification: SubClassification }>
@@ -56,26 +53,10 @@ const GamePlayPage = async ({ params }: GameLandingPageProps) => {
           />
           <CountdownTimer className="text-[#AEB0F1]" targetTime={endOfDay} />
         </div>
-        <GameChoiceButtons />
+        <GameChoiceButtons subClassification={subClassification} />
       </PageBody>
     </Page>
   )
 }
-
-const SelectButton = ({
-  className,
-  ...props
-}: React.ComponentProps<'button'>) => (
-  <button
-    className={cn(
-      'h-[160px] flex justify-center items-center rounded-16',
-      className
-    )}
-    style={{
-      background: 'rgba(92, 71, 182, 0.30)',
-    }}
-    {...props}
-  />
-)
 
 export default GamePlayPage
