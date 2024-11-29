@@ -29,6 +29,7 @@ const PriceTrackerDetailPage = async ({
 }: PriceTrackerDetailPageProps) => {
   const { id } = await params
   const data = await fetchLiveCostClassificationDetail(Number(id))
+  console.log('🚀 ~ data:', data)
   const chartData = data.list.map((d) => ({ date: d.baseDate, rate: d.amount }))
   const classification = data.classification
   const title = TITLE[classification]
@@ -45,9 +46,17 @@ const PriceTrackerDetailPage = async ({
             <h2 className="text-24 font-bold">
               {data.name} {data.unit}
             </h2>
-            <p className="text-16 font-semibold text-primary">
-              어제보다 12.18원 비싸요
-            </p>
+
+            {data.diffAmount > 0 ? (
+              <p className="text-16 font-semibold text-red-600">
+                30일 평균보다 {data.diffAmount.toLocaleString()}원 비싸요
+              </p>
+            ) : (
+              <p className="text-16 font-semibold text-primary">
+                30일 평균보다 {Math.abs(data.diffAmount).toLocaleString()}원
+                싸요
+              </p>
+            )}
           </div>
 
           <DetailSummaryCard
