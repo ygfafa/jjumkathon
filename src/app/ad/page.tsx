@@ -7,7 +7,7 @@ import useCountdown from '@/hooks/use-countdown'
 import { isWebView } from '@/lib/bridge/is-webview'
 import { callWebview } from '@/lib/webview'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { Suspense, useEffect, useRef, useState } from 'react'
+import { Suspense, useEffect, useRef } from 'react'
 
 const AD_DELAY = 5
 

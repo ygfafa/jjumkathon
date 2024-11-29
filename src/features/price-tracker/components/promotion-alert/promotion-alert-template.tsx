@@ -11,7 +11,6 @@ import { Button } from '@/components/shadcn/button'
 import React from 'react'
 
 import Bell from '@/assets/icons/bell.svg'
-import { isWebView } from '@/lib/bridge/is-webview'
 
 type PromotionAlertTemplateProps = {
   title: string
@@ -21,7 +20,6 @@ type PromotionAlertTemplateProps = {
 const PromotionAlertTemplate = ({
   title,
   description,
-  link,
 }: PromotionAlertTemplateProps) => {
   return (
     <div className="p-16 shadow bg-white rounded-16">
