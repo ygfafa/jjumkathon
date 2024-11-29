@@ -4,14 +4,14 @@ import Page from '@/components/layouts/page'
 import { PageBody } from '@/components/layouts/page-body'
 import { PageHeader } from '@/components/layouts/page-header'
 
-import { Meta, MetaContent, MetaExtra, MetaTitle } from '@/components/meta'
-import { Button } from '@/components/shadcn/button'
+import { ClassificationType } from '@/api/fetch-live-cost-classification'
 import { fetchLiveCostClassificationDetail } from '@/api/fetch-live-cost-classification-detail'
+import { Meta, MetaContent, MetaExtra, MetaTitle } from '@/components/meta'
+import NotificationButton from '@/components/notification-button'
 import AdListCard from '@/features/price-tracker/components/ad-list-card'
 import DetailSummaryCard from '@/features/price-tracker/components/detail-summary-card'
 import Recent30DaysChart from '@/features/price-tracker/components/recent-30-days-chart'
 import dayjs from 'dayjs'
-import { ClassificationType } from '@/api/fetch-live-cost-classification'
 import Image from 'next/image'
 
 const TITLE: Record<ClassificationType, string> = {
@@ -27,14 +27,9 @@ const PriceTrackerDetailPage = async ({
   params,
 }: PriceTrackerDetailPageProps) => {
   const { id } = await params
-  console.log('🚀 ~ id:', id)
-
   const data = await fetchLiveCostClassificationDetail(id)
-  console.log('🚀 ~ data:', data)
   const chartData = data.list.map((d) => ({ date: d.baseDate, rate: d.amount }))
-
   const classification = data.classification
-
   const title = TITLE[classification]
   return (
     <Page>
@@ -79,7 +74,7 @@ const PriceTrackerDetailPage = async ({
               </MetaTitle>
             </MetaContent>
             <MetaExtra>
-              <Button size="sm">알림받기</Button>
+              <NotificationButton />
             </MetaExtra>
           </Meta>
         </div>

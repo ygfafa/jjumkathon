@@ -24,7 +24,7 @@ const GameChoiceButtons = ({ subClassification }: GameChoiceButtonsProps) => {
     try {
       await postRewardVote({ riseFlag, userId, subClassification })
       setOpen(true)
-    } catch (error) {
+    } catch {
       alert('살살 다뤄주세요.')
       setOpen(true)
     }

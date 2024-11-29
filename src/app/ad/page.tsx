@@ -4,7 +4,7 @@ import Page from '@/components/layouts/page'
 import PageBottomFixedArea from '@/components/layouts/page-bottom-fixed-area'
 import { Button } from '@/components/shadcn/button'
 import { useRouter, useSearchParams } from 'next/navigation'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { Suspense, useEffect, useRef, useState } from 'react'
 
 const AdPage = () => {
   const params = useSearchParams()
@@ -61,4 +61,12 @@ const AdPage = () => {
   )
 }
 
-export default AdPage
+const SuspensedAdPage = () => {
+  return (
+    <Suspense fallback={<div>광고를 불러오고 있습니다...</div>}>
+      <AdPage />
+    </Suspense>
+  )
+}
+
+export default SuspensedAdPage

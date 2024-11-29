@@ -8,10 +8,6 @@ const Initializer = () => {
   useEffect(() => {
     if (isWebView()) {
       window.WebBridge = createWebviewBridge()
-      window.WebBridge.send({
-        method: 'showToast',
-        data: { type: 'success', text: '웹뷰를 시작합니다' },
-      })
     }
   }, [])
 

@@ -1,5 +1,3 @@
-import qs from 'querystring'
-
 export type SubClassification =
   | 'DIESEL'
   | 'GASOLINE'

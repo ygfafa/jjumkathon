@@ -1,8 +1,7 @@
 'use client'
 
-import React, { useEffect } from 'react'
-import SelectDialog from './select-bottom-sheet'
 import { useQuerySync } from '@/hooks/use-query-sync'
+import SelectDialog from './select-bottom-sheet'
 
 const items = [
   { label: '휘발유', value: 'GASOLINE' },
