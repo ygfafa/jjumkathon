@@ -3,6 +3,8 @@
 import Page from '@/components/layouts/page'
 import PageBottomFixedArea from '@/components/layouts/page-bottom-fixed-area'
 import { Button } from '@/components/shadcn/button'
+import { isWebView } from '@/lib/bridge/is-webview'
+import { callWebview } from '@/lib/webview'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { Suspense, useEffect, useRef, useState } from 'react'
 
@@ -34,6 +36,15 @@ const AdPage = () => {
   const handleMove = () => {
     router.replace(redirectTo)
   }
+
+  useEffect(() => {
+    if (isWebView()) {
+      callWebview('newAppBar', {
+        overlay: true,
+        enabled: true,
+      })
+    }
+  }, [])
 
   return (
     <Page>
