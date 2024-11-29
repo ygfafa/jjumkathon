@@ -1,7 +1,6 @@
 import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 
-// 4자리 랜덤 ID 생성 함수
 const generateRandomId = () =>
   Math.floor(1000 + Math.random() * 9000).toString()
 
