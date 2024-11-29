@@ -40,11 +40,17 @@ const GameChoiceButtons = ({ subClassification }: GameChoiceButtonsProps) => {
     <>
       <div className="flex flex-col ">
         <SelectButton onClick={() => handleVote(true)}>
-          <NoIcon />
+          <div className="flex flex-col gap-12">
+            <NoIcon />
+            <span className="text-16 text-white">상승한다</span>
+          </div>
         </SelectButton>
         <p className="text-[#D2CEFF] text-center font-bold my-4">vs</p>
         <SelectButton onClick={() => handleVote(true)}>
-          <YesIcon />
+          <div className="flex flex-col gap-12">
+            <YesIcon />
+            <span className="text-16 text-white">하락한다</span>
+          </div>
         </SelectButton>
       </div>
 

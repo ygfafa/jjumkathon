@@ -3,18 +3,20 @@
 import Page from '@/components/layouts/page'
 import PageBottomFixedArea from '@/components/layouts/page-bottom-fixed-area'
 import { Button } from '@/components/shadcn/button'
-import { useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import React, { useEffect, useRef, useState } from 'react'
 
 const AdPage = () => {
   const params = useSearchParams()
-  const redirectTo = params.get('redirectTo')
-  console.log('🚀 ~ AdPage ~ redirectTo:', redirectTo)
+  const redirectTo = params.get('redirectTo') || '/games'
   const videoRef = useRef<HTMLVideoElement>(null)
 
+  const router = useRouter()
   const [show, setShow] = useState(false)
 
-  const handleMove = () => {}
+  const handleMove = () => {
+    router.replace(redirectTo)
+  }
 
   useEffect(() => {
     const handleTimeUpdate = () => {

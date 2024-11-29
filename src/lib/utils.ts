@@ -22,4 +22,4 @@ export function cn(...inputs: ClassValue[]) {
   return customTwMerge(clsx(inputs))
 }
 
-export const getUserId = () => Cookies.get('userId')!
+export const getUserId = () => Number(Cookies.get('userId') || 1)

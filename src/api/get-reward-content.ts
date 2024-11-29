@@ -26,10 +26,10 @@ export type RewardContentResponse = {
 }
 
 export const getRewardContent = async (
-  userId: string
+  userId: number
 ): Promise<RewardContentResponse> => {
   const response = await fetch(
-    `http://192.168.103.223:8080/api/v1/reward/content?userId=1`,
+    `http://192.168.103.223:8080/api/v1/reward/content?userId=${userId}`,
     { cache: 'no-store' }
   )
   if (!response.ok) {

@@ -7,7 +7,7 @@ export type RewardVoteResponse = {
 
 type PostRewardVoteReqBody = {
   subClassification: SubClassification
-  userId: string
+  userId: number
   riseFlag: boolean
 }
 
