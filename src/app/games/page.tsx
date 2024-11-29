@@ -26,7 +26,7 @@ const GamesPage = async () => {
     <Page>
       <PageHeader title="생활물가 맞추기" />
 
-      <div className="px-20 py-12 w-full bg-[#E9F7E8] mb-14">
+      <div className="px-20 py-12 w-full bg-[#E9F7E8]">
         <Meta>
           <MoneyIcon />
           <MetaContent>
@@ -39,8 +39,8 @@ const GamesPage = async () => {
         </Meta>
       </div>
 
-      <PageBody>
-        <div className="shadow p-20 rounded-16 mb-32">
+      <PageBody className="bg-gray-100 py-24">
+        <div className="shadow p-20 rounded-16 mb-32 bg-white">
           <p className="text-primary mb-4">2024.11.29 기준</p>
           <h3 className="text-24 font-bold mb-28">오늘의 생활물가</h3>
 
@@ -53,7 +53,7 @@ const GamesPage = async () => {
             모두 참여하고 최대 100만 포인트 받기
           </p>
 
-          <div className="shadow p-20 rounded-16">
+          <div className="shadow p-20 rounded-16 bg-white">
             <div className="text-16 text-[#606A76] mb-24">
               <CountdownTimer
                 className="font-bold"
