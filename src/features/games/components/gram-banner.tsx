@@ -10,7 +10,7 @@ type GameBannerProps = {
 }
 
 const GameBanner = ({ link }: GameBannerProps) => {
-  const count = useCountdown(10)
+  const count = useCountdown(5)
 
   const router = useRouter()
 

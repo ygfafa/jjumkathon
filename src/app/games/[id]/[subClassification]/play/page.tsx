@@ -1,13 +1,14 @@
 import Page from '@/components/layouts/page'
 import { PageBody } from '@/components/layouts/page-body'
 import { PageHeader } from '@/components/layouts/page-header'
-import Image from 'next/image'
 
+import { fetchLiveCostClassificationDetail } from '@/api/fetch-live-cost-classification-detail'
 import { SubClassification } from '@/api/get-reward-content'
+import { getRewardVote } from '@/api/get-reward-vote'
 import CountdownTimer from '@/components/count-down-timer'
+import VoteBar from '@/components/vote-bar'
 import GameChoiceButtons from '@/features/games/components/game-choice-buttons'
 import dayjs from 'dayjs'
-import { fetchLiveCostClassificationDetail } from '@/api/fetch-live-cost-classification-detail'
 
 type GameLandingPageProps = {
   params: Promise<{ subClassification: SubClassification; id: number }>
@@ -37,7 +38,9 @@ const GamePlayPage = async ({ params }: GameLandingPageProps) => {
   const endOfDay = dayjs().endOf('day').toISOString()
   const title = TITLE[subClassification]
 
-  const data = await fetchLiveCostClassificationDetail(Number(id))
+  const detail = await fetchLiveCostClassificationDetail(Number(id))
+  const vote = await getRewardVote(detail.subClassification)
+
   return (
     <Page
       className="bg-red-50"
@@ -59,22 +62,15 @@ const GamePlayPage = async ({ params }: GameLandingPageProps) => {
         <div className="text-white">
           <p>
             {dayjs().format('YYYY.MM.DD')} 기준 {title}{' '}
-            {data.amount.toLocaleString()}원
+            {detail.amount.toLocaleString()}원
           </p>
-          <p>최근 30일 평균 {data.avgAmount.toLocaleString()}원</p>
-          <p>최근 30일 최고가 {data.highAmount.toLocaleString()}원</p>
-          <p>최근 30일 최저가 {data.lowAmount.toLocaleString()}원</p>
+          <p>최근 30일 평균 {detail.avgAmount.toLocaleString()}원</p>
+          <p>최근 30일 최고가 {detail.highAmount.toLocaleString()}원</p>
+          <p>최근 30일 최저가 {detail.lowAmount.toLocaleString()}원</p>
         </div>
 
         <div className="flex flex-col gap-14 mb-32">
-          <Image
-            src="/images/exchange-rate-game-flag.png"
-            alt="avatar"
-            width={1000}
-            height={404}
-            objectFit="cover"
-            layout="responsive"
-          />
+          <VoteBar votesAgainst={vote.fallCount} votesFor={vote.riseCount} />
           <CountdownTimer className="text-[#AEB0F1]" targetTime={endOfDay} />
         </div>
         <GameChoiceButtons subClassification={subClassification} />
