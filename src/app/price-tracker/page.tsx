@@ -24,6 +24,8 @@ type PriceTrackerPageProps = {
 const PriceTrackerPage = async ({ searchParams }: PriceTrackerPageProps) => {
   const params = await searchParams
 
+  const currentType = params.type || 'EXCHANGE_RATE'
+
   return (
     <Page>
       <PageHeader title="생활물가 알리미" />
@@ -41,28 +43,28 @@ const PriceTrackerPage = async ({ searchParams }: PriceTrackerPageProps) => {
           <Meta>
             <MoneyIcon />
             <MetaContent>
-              {params.type === 'EXCHANGE_RATE' && (
+              {currentType === 'EXCHANGE_RATE' && (
                 <MetaTitle className="text-gray-500">
                   바뀌는
                   <b className="font-bold text-green-500"> 환율 정보 </b>
                   들을 알려드릴까요?
                 </MetaTitle>
               )}
-              {params.type === 'FOOD' && (
+              {currentType === 'FOOD' && (
                 <MetaTitle className="text-gray-500">
                   우리동네
                   <b className="font-bold text-green-500"> 식재료 가격 </b>
                   알려드릴까요?
                 </MetaTitle>
               )}
-              {params.type === 'OIL' && (
+              {currentType === 'OIL' && (
                 <MetaTitle className="text-gray-500">
                   우리동네
                   <b className="font-bold text-green-500"> 최저가 주유소 </b>
                   알려드릴까요?
                 </MetaTitle>
               )}
-              {params.type === 'living-benefits' && (
+              {currentType === 'living-benefits' && (
                 <MetaTitle className="text-gray-500">
                   새로 생길
                   <b className="font-bold text-green-500"> 생활 혜택 </b>
@@ -77,12 +79,12 @@ const PriceTrackerPage = async ({ searchParams }: PriceTrackerPageProps) => {
         </div>
 
         <section className="px-20">
-          {params.type === 'living-benefits' ? (
+          {currentType === 'living-benefits' ? (
             <LivingBenefits />
           ) : (
             <Suspense fallback={<div />}>
               <PriceTackerInfo
-                type={params.type || 'EXCHANGE_RATE'}
+                type={currentType}
                 location={params?.location}
                 subClassification={params?.subClassification}
               />
