@@ -11,6 +11,13 @@ import AdListCard from '@/features/price-tracker/components/ad-list-card'
 import DetailSummaryCard from '@/features/price-tracker/components/detail-summary-card'
 import Recent30DaysChart from '@/features/price-tracker/components/recent-30-days-chart'
 import dayjs from 'dayjs'
+import { ClassificationType } from '@/api/fetch-live-cost-classification'
+
+const TITLE: Record<ClassificationType, string> = {
+  FOOD: '식료품',
+  EXCHANGE_RATE: '환율',
+  OIL: '유가',
+}
 
 type PriceTrackerDetailPageProps = {
   params: Promise<{ id: string }>
@@ -19,26 +26,32 @@ const PriceTrackerDetailPage = async ({
   params,
 }: PriceTrackerDetailPageProps) => {
   const { id } = await params
+  console.log('🚀 ~ id:', id)
 
   const data = await fetchLiveCostClassificationDetail(id)
+  console.log('🚀 ~ data:', data)
   const chartData = data.list.map((d) => ({ date: d.baseDate, rate: d.amount }))
+
+  const classification = data.classification
   return (
     <Page>
       <PageHeader title="생활물가 알리미" />
       <PageBody noBodyPadding>
         <div className="px-20 w-full">
           <ChipButton selected className="mb-4">
-            환율
+            {TITLE[classification]}
           </ChipButton>
           <div className="mb-32">
-            <h2 className="text-24 font-bold">미국 {data.unit}</h2>
+            <h2 className="text-24 font-bold">
+              {data.name} {data.unit}
+            </h2>
             <p className="text-16 font-semibold text-primary">
               어제보다 12.18원 비싸요
             </p>
           </div>
 
           <DetailSummaryCard
-            type="환율"
+            type={TITLE[classification]}
             recent30DaysAvg={data.avgAmount}
             recent30DaysMax={data.highAmount}
             recent30DaysMaxDate={dayjs(data.highDate).format('YY.MM.DD')}
