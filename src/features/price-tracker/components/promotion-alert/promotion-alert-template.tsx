@@ -11,6 +11,7 @@ import { Button } from '@/components/shadcn/button'
 import React from 'react'
 
 import Bell from '@/assets/icons/bell.svg'
+import { isWebView } from '@/lib/bridge/is-webview'
 
 type PromotionAlertTemplateProps = {
   title: string
@@ -33,9 +34,7 @@ const PromotionAlertTemplate = ({
           </MetaDescription>
         </MetaContent>
         <MetaExtra>
-          <Button variant="secondary" onClick={() => alert(link)}>
-            혜택 받기
-          </Button>
+          <Button variant="secondary">혜택 받기</Button>
         </MetaExtra>
       </Meta>
     </div>
