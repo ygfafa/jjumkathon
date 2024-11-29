@@ -99,7 +99,7 @@ const RewardContent = async () => {
 
   return (
     <div className="flex flex-col gap-24">
-      {data.list.map(({ subClassification, voteFlag }, index) => {
+      {data.list.map(({ subClassification, voteFlag, id }, index) => {
         const gameBlocked = gameCount <= index
         const currentBlockedGame = data.list[gameCount]
 
@@ -155,9 +155,9 @@ const RewardContent = async () => {
                 <Button disabled={isCurrentGame && gameBlocked}>
                   <Link
                     href={
-                      isCurrentGame
-                        ? `/games/${subClassification}`
-                        : `/ad?redirectTo=/games/${subClassification}`
+                      isCurrentGame || index === 0
+                        ? `/games/${id}/${subClassification}`
+                        : `/ad?redirectTo=/games/${id}/${subClassification}`
                     }
                   >
                     참여

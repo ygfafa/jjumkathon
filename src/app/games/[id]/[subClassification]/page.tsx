@@ -14,13 +14,33 @@ import Link from 'next/link'
 import React from 'react'
 
 type GameLandingPageProps = {
-  params: Promise<{ subClassification: SubClassification }>
+  params: Promise<{ subClassification: SubClassification; id: number }>
+}
+
+const TITLE: Record<SubClassification, string> = {
+  DIESEL: '경유값',
+  GASOLINE: '휘발유값',
+  KEROSENE: '등유값',
+  LPG: '가스값',
+  PREMIUM_GASOLINE: '고급 휘발유값',
+  RICE: '쌀값',
+  POTATO: '감자값',
+  CABBAGE: '배추값',
+  PORK: '삼겹살값',
+  APPLE: '사과값',
+  LETTUCE: '상추값',
+  USD: '달러 환율',
+  JPY: '엔화 환율',
+  CNY: '위안 환율',
+  EUR: '유로 환율',
 }
 
 const GameLandingPage = async ({ params }: GameLandingPageProps) => {
-  const { subClassification } = await params
+  const { subClassification, id } = await params
 
   const data = await getRewardVote(subClassification)
+  const title = TITLE[subClassification]
+
   return (
     <Page
       style={{
@@ -28,14 +48,14 @@ const GameLandingPage = async ({ params }: GameLandingPageProps) => {
       }}
     >
       <PageHeader
-        title={`${subClassification} 맞추기 게임`}
+        title={`${title} 맞추기 게임`}
         className="bg-transparent text-white"
         appBar={{ overlay: true, themeColor: '#ffffff' }}
       />
 
       <PageBody>
         <h2 className="font-bold text-24 text-white text-center">
-          내일자 {subClassification} 예측하고 <br />
+          내일자 {title} 예측하고 <br />
           <b className="text-[#FBB62D]">10만 포인트</b> 받아요
         </h2>
 
@@ -79,7 +99,7 @@ const GameLandingPage = async ({ params }: GameLandingPageProps) => {
       </PageBody>
 
       <PageBottomFixedArea className="bg-transparent">
-        <Link href={`/games/${subClassification}/play`}>
+        <Link href={`/games/${id}/${subClassification}/play`}>
           <Button size="lg" className="w-full">
             게임 참여하기
           </Button>

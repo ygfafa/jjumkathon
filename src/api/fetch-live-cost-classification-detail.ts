@@ -19,7 +19,7 @@ export type LiveCostNotiDetailResponse = {
 }
 
 export const fetchLiveCostClassificationDetail = async (
-  id: string
+  id: number
 ): Promise<LiveCostNotiDetailResponse> => {
   const response = await fetch(
     `http://192.168.103.223:8080/api/v1/live-cost/classification/detail?id=${id}`,

@@ -60,7 +60,11 @@ const PriceTackerInfo = async ({
                 </span>
                 <span
                   className={`${
-                    data.diffRate ? 'text-red-600' : 'text-blue-600'
+                    data.diffRate === 0
+                      ? 'text-gray-400'
+                      : data.diffRate > 0
+                      ? 'text-red-600'
+                      : 'text-blue-600'
                   }`}
                 >
                   {data.diffRate}%

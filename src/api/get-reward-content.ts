@@ -15,6 +15,7 @@ export type SubClassification =
   | 'EUR'
   | 'PORK'
 export type RewardContentItem = {
+  id: number
   subClassification: SubClassification
   voteFlag: boolean
   desc: string

@@ -27,7 +27,7 @@ const PriceTrackerDetailPage = async ({
   params,
 }: PriceTrackerDetailPageProps) => {
   const { id } = await params
-  const data = await fetchLiveCostClassificationDetail(id)
+  const data = await fetchLiveCostClassificationDetail(Number(id))
   const chartData = data.list.map((d) => ({ date: d.baseDate, rate: d.amount }))
   const classification = data.classification
   const title = TITLE[classification]
