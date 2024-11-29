@@ -21,7 +21,7 @@ const LivingBenefitsDetailPage = async () => {
               인터넷 요금 줄이기
             </h2>
             <p className="text-16 font-semibold text-primary">
-              어제보다 12.18원 비싸요
+              최대 25만원 적용 혜택
             </p>
           </div>
         </section>
