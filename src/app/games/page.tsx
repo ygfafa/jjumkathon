@@ -137,7 +137,7 @@ const RewardContent = async () => {
                 {GAME_TITLE[subClassification]}
               </MetaTitle>
 
-              {gameBlocked && (
+              {gameBlocked && index !== 0 && (
                 <MetaDescription className="text-14 text-primary">
                   30초 광고보고 게임에 참여하세요
                 </MetaDescription>
