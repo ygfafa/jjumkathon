@@ -4,37 +4,36 @@ import Page from '@/components/layouts/page'
 import PageBottomFixedArea from '@/components/layouts/page-bottom-fixed-area'
 import { Button } from '@/components/shadcn/button'
 import { useRouter, useSearchParams } from 'next/navigation'
-import React, { Suspense, useEffect, useRef, useState } from 'react'
+import { Suspense, useEffect, useRef, useState } from 'react'
+
+const AD_DELAY = 5
+const useCountdown = (initialCount: number) => {
+  const [count, setCount] = useState(initialCount)
+
+  useEffect(() => {
+    if (count <= 0) return
+
+    const timer = setInterval(() => {
+      setCount((prevCount) => prevCount - 1)
+    }, 1000)
+
+    return () => clearInterval(timer)
+  }, [count])
+
+  return count
+}
 
 const AdPage = () => {
+  const count = useCountdown(AD_DELAY) // 5초 카운트다운
   const params = useSearchParams()
   const redirectTo = params.get('redirectTo') || '/games'
   const videoRef = useRef<HTMLVideoElement>(null)
 
   const router = useRouter()
-  const [show, setShow] = useState(false)
 
   const handleMove = () => {
     router.replace(redirectTo)
   }
-
-  useEffect(() => {
-    const handleTimeUpdate = () => {
-      if (videoRef.current && videoRef.current.currentTime >= 5) {
-        setShow(true)
-      }
-    }
-
-    if (videoRef.current) {
-      videoRef.current.addEventListener('timeupdate', handleTimeUpdate)
-    }
-
-    return () => {
-      if (videoRef.current) {
-        videoRef.current.removeEventListener('timeupdate', handleTimeUpdate)
-      }
-    }
-  }, [])
 
   return (
     <Page>
@@ -51,9 +50,13 @@ const AdPage = () => {
       </div>
 
       <PageBottomFixedArea className="bg-transparent">
-        {show && (
+        {count === 0 ? (
           <Button size="lg" className="w-full" onClick={handleMove}>
-            게임하기
+            시작하기
+          </Button>
+        ) : (
+          <Button size="lg" className="w-full" disabled>
+            {count}초 후 게임을 시작합니다
           </Button>
         )}
       </PageBottomFixedArea>

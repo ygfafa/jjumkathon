@@ -10,16 +10,15 @@ import {
   MetaTitle,
 } from '@/components/meta'
 
-import MoneyBagGreenIcon from '@/assets/icons/money_bag_green.svg'
-import ChevronRightIcon from '@/assets/icons/chevron-right.svg'
 import { fetchLiveCostClassification } from '@/api/fetch-live-cost-classification'
-import dayjs from 'dayjs'
-import CountdownTimer from '@/components/count-down-timer'
 import { getRewardContent, SubClassification } from '@/api/get-reward-content'
-import { Suspense } from 'react'
+import CountdownTimer from '@/components/count-down-timer'
 import { Button } from '@/components/shadcn/button'
-import Link from 'next/link'
+import TodayList from '@/features/games/components/today-list'
+import dayjs from 'dayjs'
 import { cookies } from 'next/headers'
+import Link from 'next/link'
+import { Suspense } from 'react'
 const GamesPage = async () => {
   const data = await fetchLiveCostClassification()
 
@@ -45,35 +44,7 @@ const GamesPage = async () => {
           <p className="text-primary mb-4">2024.11.29 기준</p>
           <h3 className="text-24 font-bold mb-28">오늘의 생활물가</h3>
 
-          <div className="flex flex-col gap-24 mb-8">
-            {data.list.map(({ id, amount, diffRate, name, unit }) => (
-              <Meta key={id}>
-                <div className="w-[40px] h-[40px] bg-gray-100 flex-shrink-0 rounded-full flex justify-center items-center">
-                  <MoneyBagGreenIcon />
-                </div>
-                <MetaContent>
-                  <MetaTitle>
-                    <span className="font-bold">{name}</span> {unit}
-                  </MetaTitle>
-                  <MetaDescription>
-                    <span className="font-bold mr-8">
-                      {amount.toLocaleString()}원{' '}
-                    </span>
-                    <span
-                      className={`${
-                        diffRate > 0 ? 'text-red-600' : 'text-blue-600'
-                      }`}
-                    >
-                      {diffRate}%
-                    </span>
-                  </MetaDescription>
-                </MetaContent>
-                <MetaExtra>
-                  <ChevronRightIcon />
-                </MetaExtra>
-              </Meta>
-            ))}
-          </div>
+          <TodayList data={data} />
         </div>
 
         <div>

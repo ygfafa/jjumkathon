@@ -25,7 +25,7 @@ type PriceTackerInfoProps = {
   location?: string
 }
 
-const ICON: Record<ClassificationType, React.ReactNode> = {
+const CLASSIFICATION_ICON: Record<ClassificationType, React.ReactNode> = {
   EXCHANGE_RATE: <MoneyBagGreen />,
   FOOD: <CalcIcon />,
   OIL: <OilIcon />,
@@ -48,7 +48,7 @@ const PriceTackerInfo = async ({
         <Link href={`/price-tracker/${data.id}`} key={index}>
           <Meta>
             <div className="w-[40px] h-[40px] bg-gray-100 flex-shrink-0 rounded-full flex justify-center items-center">
-              {ICON[type]}
+              {CLASSIFICATION_ICON[type]}
             </div>
             <MetaContent>
               <MetaTitle>

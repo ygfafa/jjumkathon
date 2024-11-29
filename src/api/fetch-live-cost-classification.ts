@@ -7,6 +7,7 @@ export type LiveCostNotiItem = {
   unit: string
   amount: number
   diffRate: number
+  classification: ClassificationType
 }
 export type LiveCostNotiResponse = {
   classification: ClassificationType
@@ -24,13 +25,6 @@ export type LiveCostNotiQueryParams = {
 export const fetchLiveCostClassification = async (
   params?: LiveCostNotiQueryParams
 ): Promise<LiveCostNotiResponse> => {
-  console.log(
-    '###',
-    `http://192.168.103.223:8080/api/v1/live-cost/classification?${qs.stringify(
-      params,
-      { skipNulls: true }
-    )}`
-  )
   const response = await fetch(
     `http://192.168.103.223:8080/api/v1/live-cost/classification?${qs.stringify(
       params,
