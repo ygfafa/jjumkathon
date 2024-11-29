@@ -3,27 +3,13 @@
 import Page from '@/components/layouts/page'
 import PageBottomFixedArea from '@/components/layouts/page-bottom-fixed-area'
 import { Button } from '@/components/shadcn/button'
+import useCountdown from '@/hooks/use-countdown'
 import { isWebView } from '@/lib/bridge/is-webview'
 import { callWebview } from '@/lib/webview'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { Suspense, useEffect, useRef, useState } from 'react'
 
 const AD_DELAY = 5
-const useCountdown = (initialCount: number) => {
-  const [count, setCount] = useState(initialCount)
-
-  useEffect(() => {
-    if (count <= 0) return
-
-    const timer = setInterval(() => {
-      setCount((prevCount) => prevCount - 1)
-    }, 1000)
-
-    return () => clearInterval(timer)
-  }, [count])
-
-  return count
-}
 
 const AdPage = () => {
   const count = useCountdown(AD_DELAY) // 5초 카운트다운

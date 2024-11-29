@@ -1,4 +1,5 @@
 import { ClassificationType } from './fetch-live-cost-classification'
+import { SubClassification } from './get-reward-content'
 
 export type LiveCostNotiDetailChart = {
   baseDate: string
@@ -6,6 +7,7 @@ export type LiveCostNotiDetailChart = {
 }
 export type LiveCostNotiDetailResponse = {
   classification: ClassificationType
+  subClassification: SubClassification
   name: string
   unit: string
   amount: number

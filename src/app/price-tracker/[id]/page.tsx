@@ -13,6 +13,7 @@ import DetailSummaryCard from '@/features/price-tracker/components/detail-summar
 import Recent30DaysChart from '@/features/price-tracker/components/recent-30-days-chart'
 import dayjs from 'dayjs'
 import Image from 'next/image'
+import GameBanner from '@/features/games/components/gram-banner'
 
 const TITLE: Record<ClassificationType, string> = {
   FOOD: '식료품',
@@ -31,6 +32,7 @@ const PriceTrackerDetailPage = async ({
   const chartData = data.list.map((d) => ({ date: d.baseDate, rate: d.amount }))
   const classification = data.classification
   const title = TITLE[classification]
+
   return (
     <Page>
       <PageHeader title="생활물가 알리미" />
@@ -157,6 +159,8 @@ const PriceTrackerDetailPage = async ({
           />
         )}
       </PageBody>
+
+      <GameBanner link={`/games/${id}/${data.subClassification}`} />
     </Page>
   )
 }
